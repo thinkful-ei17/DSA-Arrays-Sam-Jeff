@@ -164,34 +164,60 @@ classified as O(n). */
 // [0,0,0,0,0],
 // [0,0,1,1,0]];
 
-function twoDimenArray(twoDimArr) {
+// function twoDimenArray(twoDimArr) {
   
-  let vertical = [];
-  let horizontal = [];
-  for (let i=0; i<twoDimArr.length; i++) {
-    for (let j=0; j<twoDimArr[i].length; j++) {
-      let arr = twoDimArr[i];
-      if (arr[j] === 0) {
-        horizontal[i] = true;
-        vertical[j] = true;
-      }
+//   let vertical = [];
+//   let horizontal = [];
+//   for (let i=0; i<twoDimArr.length; i++) {
+//     for (let j=0; j<twoDimArr[i].length; j++) {
+//       let arr = twoDimArr[i];
+//       if (arr[j] === 0) {
+//         horizontal[i] = true;
+//         vertical[j] = true;
+//       }
+//     }
+//   }
+//   for (let i=0; i<twoDimArr.length; i++) {
+//     for (let j=0; j<twoDimArr[i].length; j++) {
+//       let arr = twoDimArr[i];
+//       if (vertical[j] || horizontal[i]) {
+//         arr[j] = 0;
+//       }
+//     }
+//   }
+//   return twoDimArr;
+// }
+
+// console.log(twoDimenArray(
+//   [[1,0,1,1,0],
+//     [0,1,1,1,0],
+//     [1,1,1,1,1],
+//     [1,0,1,1,1],
+//     [1,1,1,1,1]])
+// );
+
+// String Rotation - O(n) It only runs one for loop that executes a number of operations that is directly proportional to the input size.
+
+//Input: amazon, azonma
+//Output: False
+//Input: amazon, azonam
+//Output: true
+
+function stringRotation(str1, str2) {
+
+  if (str1.length !== str2.length) {
+    return false;
+  }
+
+  let newString = str1;
+  for (let i = 0; i < str1.length; i++) {
+    newString = newString.slice(1, newString.length) + newString[0];
+    if (newString === str2) {
+      return true;
     }
   }
-  for (let i=0; i<twoDimArr.length; i++) {
-    for (let j=0; j<twoDimArr[i].length; j++) {
-      let arr = twoDimArr[i];
-      if (vertical[j] || horizontal[i]) {
-        arr[j] = 0;
-      }
-    }
-  }
-  return twoDimArr;
+
+  return false;
 }
 
-console.log(twoDimenArray(
-  [[1,0,1,1,0],
-    [0,1,1,1,0],
-    [1,1,1,1,1],
-    [1,0,1,1,1],
-    [1,1,1,1,1]])
-);
+console.log(stringRotation('amazon', 'azonma'));
