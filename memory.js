@@ -44,10 +44,6 @@ class Memory {
   set(ptr, value) {
     this.memory[ptr] = value;
   }
-
-  test() {
-    console.log('works');
-  }
 }
 
 module.exports = Memory;
