@@ -103,3 +103,44 @@ function urlifyString(str) {
 // }
 
 // console.log(mergeArrays([1, 3, 6, 8, 11], [2, 3, 5, 8, 9, 10]));
+
+
+/* REMOVE CHARACTERS -- 4(n) Inefficient Linear.  It is not Polynomial because
+it does not increase at the complexity of n^2 based on the input string.  However,
+it runs multiple operations in the replace method for each loop in the for loop, so 
+it scales rapidly in proportion to our input. */
+
+// function removeChars(str, char) {
+
+//   let newArr = str;
+//   for (let i = 0; i < char.length; i++) {
+//     let reg = new RegExp(char[i], 'g');
+//     newArr = newArr.replace(reg, '');
+//   }
+
+//   console.log(newArr);
+// }
+
+// removeChars('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou');
+
+
+// PRODUCTS - O(n) .  It is essentially O(n) + O(n), but the complexity would just be classified as O(n).
+
+// Input: [1, 3, 9, 4]
+//Output: [108, 36, 12, 27]
+
+function Products(arr) {
+  let counter = 1;
+  for (let i = 0; i < arr.length; i++) {
+    counter *= arr[i];
+  }
+
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(counter / arr[i]);
+  }
+
+  return result;
+}
+
+console.log(Products([1, 3, 9, 4]));
