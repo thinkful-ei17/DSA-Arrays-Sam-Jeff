@@ -105,7 +105,7 @@ function urlifyString(str) {
 // console.log(mergeArrays([1, 3, 6, 8, 11], [2, 3, 5, 8, 9, 10]));
 
 
-/* REMOVE CHARACTERS -- 4(n) Inefficient Linear.  It is not Polynomial because
+/* REMOVE CHARACTERS -- O(n) Inefficient Linear.  It is not Polynomial because
 it does not increase at the complexity of n^2 based on the input string.  However,
 it runs multiple operations in the replace method for each loop in the for loop, so 
 it scales rapidly in proportion to our input. */
@@ -118,29 +118,80 @@ it scales rapidly in proportion to our input. */
 //     newArr = newArr.replace(reg, '');
 //   }
 
-//   console.log(newArr);
+//   return newArr;
 // }
 
-// removeChars('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou');
+// console.log(removeChars('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
 
 
-// PRODUCTS - O(n) .  It is essentially O(n) + O(n), but the complexity would just be classified as O(n).
+/* PRODUCTS - O(n) .  It is essentially O(n) + O(n), but the complexity would just be 
+classified as O(n). */
 
 // Input: [1, 3, 9, 4]
 //Output: [108, 36, 12, 27]
 
-function Products(arr) {
-  let counter = 1;
-  for (let i = 0; i < arr.length; i++) {
-    counter *= arr[i];
-  }
+// function products(arr) {
+//   let counter = 1;
+//   for (let i = 0; i < arr.length; i++) {
+//     counter *= arr[i];
+//   }
 
-  let result = [];
-  for (let i = 0; i < arr.length; i++) {
-    result.push(counter / arr[i]);
-  }
+//   let result = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     result.push(counter / arr[i]);
+//   }
 
-  return result;
+//   return result;
+// }
+
+// console.log(products([1, 3, 9, 4]));
+
+// 2D ARRAY - O(n^2)
+
+// Input: 
+
+// [[1,0,1,1,0],
+// [0,1,1,1,0],
+// [1,1,1,1,1],
+// [1,0,1,1,1],
+// [1,1,1,1,1]];
+
+// Output:
+
+// [[0,0,0,0,0],
+// [0,0,0,0,0],
+// [0,0,1,1,0],
+// [0,0,0,0,0],
+// [0,0,1,1,0]];
+
+function twoDimenArray(twoDimArr) {
+  
+  let vertical = [];
+  let horizontal = [];
+  for (let i=0; i<twoDimArr.length; i++) {
+    for (let j=0; j<twoDimArr[i].length; j++) {
+      let arr = twoDimArr[i];
+      if (arr[j] === 0) {
+        horizontal[i] = true;
+        vertical[j] = true;
+      }
+    }
+  }
+  for (let i=0; i<twoDimArr.length; i++) {
+    for (let j=0; j<twoDimArr[i].length; j++) {
+      let arr = twoDimArr[i];
+      if (vertical[j] || horizontal[i]) {
+        arr[j] = 0;
+      }
+    }
+  }
+  return twoDimArr;
 }
 
-console.log(Products([1, 3, 9, 4]));
+console.log(twoDimenArray(
+  [[1,0,1,1,0],
+    [0,1,1,1,0],
+    [1,1,1,1,1],
+    [1,0,1,1,1],
+    [1,1,1,1,1]])
+);
