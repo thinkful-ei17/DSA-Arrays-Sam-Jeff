@@ -33,7 +33,12 @@ class Array {
   }
 
   pop() {
+    if (this.length === 0) {
+      throw new Error('No Value To Remove');
+    }
+    let removedValue = memory.get(this.ptr + this.length - 1);
     this.length--;
+    return removedValue;
   }
 
   print(index) {
@@ -46,24 +51,24 @@ function main() {
   
   let arr = new Array();
 
-  // arr.push(3);
-  // arr.push(5);
-  // arr.push(15);
-  // arr.push(19);
-  // arr.push(45);
-  // arr.push(10);
+  arr.push(3);
+  arr.push(5);
+  arr.push(15);
+  arr.push(19);
+  arr.push(45);
+  arr.push(10);
+  arr.pop();
+  arr.pop();
+  arr.pop();
 
-  // arr.pop();
-  // arr.pop();
-  // arr.pop();
+  // arr.push('tauhida');
 
-  arr.push('tauhida');
-
-  arr.print(0);
+  // arr.print(0);
 
   console.log(arr);
 }
 
 main();
+
 
 
